@@ -1,0 +1,16 @@
+extends ../app/layout.pug
+
+block content
+  h1 Editar canto
+  h4= canto.nombre
+  form(action="/cantos/"+canto.id, method="POST")
+    .form-group
+      label(for="nombre") Nombre
+      input#nombre.form-control(name="nombre", value=canto.nombre)
+    .form-group
+      label(for="contenido") Contenido
+      textarea#contenido.form-control(name="contenido")= canto.contenido
+    .text-center
+      .btn-group
+        button.btn.btn-primary.btn-lg(type="submit") Guardar
+        a.btn.btn-primary.btn-lg(href="/cantos") Volver

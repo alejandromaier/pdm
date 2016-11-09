@@ -1,0 +1,20 @@
+extends ../app/layout.pug
+
+block content
+  br
+  .row
+    h2.col-xs-7 Cantos
+    .col-xs-5.text-xs-right
+      a.btn.btn-primary(href="/cantos/nuevo") Crear nuevo
+  .row.cantos
+    .col-md-7
+      table.table
+        each canto in cantos
+          tr
+            td.pointer(@click="seleccionar("+canto.get('id')+")")= canto.get('nombre')
+            td.text-xs-right
+              button.btn.btn-primary.btn-sm(@click="agregar("+canto.get('id')+")") +
+    .col-md-5(v-if="actual")
+      vista-canto(:canto="canto", :nombre="actual.nombre")
+  hr
+  a.btn.btn-primary(href="/cantos") Volver

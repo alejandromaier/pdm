@@ -1,0 +1,15 @@
+nav.navbar.navbar-light.bg-faded
+  a.navbar-brand(href='/') Coritario
+  ul.nav.navbar-nav.float-xs-right
+    if !req.cookies.logged
+      li.nav-item.dropdown(@click="abrir", :class="abierto ? 'open' : ''")
+        a.nav-link.dropdown-toggle#login-menu-opener(href="#", data-togle="dropdown", aria-haspopup="true", :aria-expanded="abierto") Iniciar sesión
+        form.dropdown-menu.login-menu(aria-labelledby="login-menu-opener", method="post", action="/login", @submit="enviar")
+          input.form-control(placeholder="Nombre de usuario" name="username")
+          input.form-control(type="password", placeholder="Contraseña" name="password")
+          button.btn.btn-outline-primary.btn-sm(type="submit") Enviar
+          //- a.btn.btn-outline-primary.btn-sm(href="/registrarse") Registrarse
+          .alert.alert-danger(v-if="error", style="margin: 0;") {{error}}
+    else
+      li.nav-item
+        a.nav-link(href="/logout") (Cerrar sesión)

@@ -1,0 +1,18 @@
+h2= l
+.row
+  .col-sm-3
+    a.btn.btn-primary.btn-lg(href="cantos") Ver cantos
+  .col-sm-9
+    .card
+      form.card-block(action="/cambiar", method="post")
+        .form-group
+          label(for="actual") Contraseña actual
+          input#actual.form-control(name="actual", type="password")
+        .form-group
+          label(for="nueva") Contraseña nueva
+          input#nueva.form-control(name="nueva", type="password")
+        .form-group
+          label(for="confirmacion") Confirmación
+          input#confirmacion.form-control(name="confirmacion", type="password")
+        .text-xs-center
+          button.btn.btn-primary(type="submit") Cambiar contraseña

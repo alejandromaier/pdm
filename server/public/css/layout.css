@@ -1,0 +1,22 @@
+.dropdown-menu.login-menu {
+  left: -110px;
+  min-width: 14rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.dropdown-menu.login-menu input, .dropdown-menu.login-menu .btn{
+  margin: 5px;
+}
+
+#contenido.form-control {
+  min-height: 50vh;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.pointer {
+  cursor: pointer;
+}

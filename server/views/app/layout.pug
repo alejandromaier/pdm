@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    title Coritario
+    link(rel="stylesheet",href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css")
+    link(rel="stylesheet",href="/css/layout.css")
+  body
+    include ./navbar.pug
+    .container
+      block content
+
+
+    script(src="http://coffeescript.org/extras/coffee-script.js")
+    script(src="/js/vue.js")
+    script(type="text/coffeescript" src="/js/modulos/app/navbar.coffee")
+    script(type="text/coffeescript" src="/js/modulos/cantos.coffee")
+    script(type="text/coffeescript" src="/js/modulos/stream.coffee")

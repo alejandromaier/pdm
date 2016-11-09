@@ -1,0 +1,15 @@
+extends ../app/layout.pug
+
+block content
+  h1 Cantos #{req.user.username}
+  a.btn.btn-primary.btn-lg(href="/cantos/agregar") Añadir canto
+  table.table.cantos
+    each canto in cantos
+      tr
+        td
+          a(href='/cantos/'+canto.cantoId)= canto.nombre
+        td.text-xs-right
+          .btn-group
+            a.btn.btn-sm.btn-primary(href="/cantos/"+canto.cantoId+"/stream") &#9654;
+            button.btn.btn-sm(title="Favorito", @click="destacar("+canto.cantoId+")", class=canto.destacado ? 'btn-danger' : 'btn-primary') !{canto.destacado ? '&#10008;' : '	&#10003;'}
+            button.btn.btn-primary.btn-sm(@click="eliminar("+canto.cantoId+")") &#x1f5d1;

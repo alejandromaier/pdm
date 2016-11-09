@@ -1,0 +1,6 @@
+extends ../app/layout.pug
+
+block content
+  .jumbotron(style="min-height: 200px; background: url(http://uapar.edu/wp-content/uploads/2014/03/xportico-noche.jpg.pagespeed.ic.8-Oza0Mvyp.jpg); background-size: cover; background-position: bottom;")
+  if req.cookies.logged
+    include ./loggedHome.pug

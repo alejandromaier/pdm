@@ -1,0 +1,13 @@
+extends ../app/layout.pug
+
+block content
+  #stream(data-canto=canto.id)
+    h1 Transmitiendo #{canto.nombre}
+    a.btn.btn-primary(href="/cantos") Volver
+    hr
+    each estrofa, index in letra
+      .card.pointer(:class="isSelected("+index+")", @click="seleccionar("+index+")")
+        p.card-text
+          each linea in formatear(estrofa)
+            div.text-xs-center #{linea}
+    a.btn.btn-primary(href="/cantos") Volver
