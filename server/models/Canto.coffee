@@ -34,7 +34,25 @@ Canto.eliminar = co.wrap (userId, cantoId) ->
 #   Promise.all lista.map (r) -> r.getCanto()
 
 Canto.getCantosDeSitio = (user) -> co ->
-  query = "SELECT * FROM cantos JOIN canto_sitios ON cantos.id = canto_sitios.cantoId WHERE canto_sitios.userId = #{user} ORDER BY destacado DESC"
+  query = "
+  SELECT *
+  FROM cantos
+  JOIN canto_sitios
+  ON cantos.id = canto_sitios.cantoId
+  WHERE canto_sitios.userId = #{user}
+  ORDER BY destacado DESC"
+  (yield sequelize.query query)[0]
+
+Canto.getCantosPorNombre = (user, nombre) -> co ->
+  query = "
+  SELECT *
+  FROM cantos
+  JOIN canto_sitios
+  ON cantos.id = canto_sitios.cantoId
+  WHERE canto_sitios.userId = #{user}
+  AND cantos.nombre
+  LIKE '#{nombre}%'
+  ORDER BY destacado DESC"
   (yield sequelize.query query)[0]
 
 Canto.getCantosNoEnSitio = (user) -> co ->

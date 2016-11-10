@@ -14,6 +14,14 @@ app.get '/:sitio/cantos', co.wrap (req, res) ->
     console.log error
   res.send cantos
 
+app.get '/:sitio/search=:nombre', co.wrap (req, res) ->
+  try
+    cantos = yield Cantos.getCantosPorNombre(req.params.sitio, req.params.nombre)
+    cantos = cantos.map (e) -> id: e.cantoId, nombre: e.nombre, updatedAt: e.updatedAt, destacado: e.destacado
+  catch error
+    console.log error
+  res.send cantos
+
 app.get '/cantos/:id', co.wrap (req, res) ->
   try
     canto = (yield Cantos.findById parseInt req.params.id, 10).toJSON()
@@ -23,7 +31,7 @@ app.get '/cantos/:id', co.wrap (req, res) ->
 
 app.post '/crear-sitio', co.wrap (req, res) ->
   {username, password, llave} = req.body
-  if llave = 'martin'
+  if llave = 'pdm2016'
     nuevo = yield Sitios.create {username, password}
     res.send nuevo
   else
